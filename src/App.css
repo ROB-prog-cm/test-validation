@@ -32,7 +32,7 @@
 
 }
 
-.formButton:enabled {
+.formButton:disabled {
     width: 400px;
     height: 57px;
     background-color: #DBE2EA;
@@ -45,7 +45,7 @@
     font-size: 16px;
 }
 
-.formButton:disabled{
+.formButton:enabled{
     background-color: #0880AE;
     color: white;
     width: 400px;

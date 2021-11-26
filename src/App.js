@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 const App = () => {
@@ -13,10 +13,6 @@ const App = () => {
     setFormValues({
       ...formValues,
       [name]: value
-    })
-    setFormErrors({
-      ...formErrors,
-      ...validate(formValues)
     })
   }
   const handleSubmit = (e) => {
@@ -40,6 +36,10 @@ const App = () => {
     }
     return errors
   }
+
+  useEffect(() => {
+    setFormErrors(validate(formValues));
+  }, [formValues]);
 
   return (
     <div className='container'>
@@ -125,12 +125,19 @@ const App = () => {
               </ul>
             </div>
             <div className="box">
-                <div className="form-group">
-                  <input type="checkbox" id="text"/>
-                  <label htmlFor="text">Принимаю условия использования</label>
-                </div>
+              <div className="form-group">
+                <input type="checkbox" id="text"/>
+                <label htmlFor="text">Принимаю условия использования</label>
+              </div>
             </div>
-            <button disabled={isSubmit}  className='formButton'>Зарегистрироваться</button>
+            <button
+              disabled={
+                Object.values(formValues).some(item => item === "") ||
+                Object.values(formErrors).some(item => item !== "")
+              }
+              className='formButton'
+            > Зарегистрироваться
+            </button>
           </div>
         </form>
       </div>
