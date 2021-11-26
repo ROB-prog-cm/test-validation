@@ -125,12 +125,10 @@ const App = () => {
               </ul>
             </div>
             <div className="box">
-              <form>
                 <div className="form-group">
                   <input type="checkbox" id="text"/>
                   <label htmlFor="text">Принимаю условия использования</label>
                 </div>
-              </form>
             </div>
             <button disabled={isSubmit}  className='formButton'>Зарегистрироваться</button>
           </div>
